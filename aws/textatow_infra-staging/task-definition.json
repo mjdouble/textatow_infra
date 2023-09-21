@@ -1,0 +1,124 @@
+{
+  "containerDefinitions": [
+    {
+      "name": "staging-web",
+      "image": "filled-in-by-gh-action",
+      "portMappings": [
+        {
+          "containerPort": 5000
+        }
+      ],
+      "secrets": [
+        {
+          "name": "DATABASE_NAME",
+          "valueFrom": "arn:aws:ssm:us-east-1:033818603844:parameter/textatow/staging/DATABASE_NAME"
+        },
+        {
+          "name": "DATABASE_USERNAME",
+          "valueFrom": "arn:aws:ssm:us-east-1:033818603844:parameter/textatow/staging/DATABASE_USERNAME"
+        },
+        {
+          "name": "DATABASE_PASSWORD",
+          "valueFrom": "arn:aws:ssm:us-east-1:033818603844:parameter/textatow/staging/DATABASE_PASSWORD"
+        },
+        {
+          "name": "DATABASE_HOST",
+          "valueFrom": "arn:aws:ssm:us-east-1:033818603844:parameter/textatow/staging/DATABASE_HOST"
+        },
+        {
+          "name": "DATABASE_PORT",
+          "valueFrom": "arn:aws:ssm:us-east-1:033818603844:parameter/textatow/staging/DATABASE_PORT"
+        },
+        {
+          "name": "DJANGO_SETTINGS_MODULE",
+          "valueFrom": "arn:aws:ssm:us-east-1:033818603844:parameter/textatow/staging/DJANGO_SETTINGS_MODULE"
+        },
+        {
+          "name": "DJANGO_SECRET_KEY",
+          "valueFrom": "arn:aws:ssm:us-east-1:033818603844:parameter/textatow/staging/DJANGO_SECRET_KEY"
+        },
+        {
+          "name": "DJANGO_ALLOWED_HOSTS",
+          "valueFrom": "arn:aws:ssm:us-east-1:033818603844:parameter/textatow/staging/DJANGO_ALLOWED_HOSTS"
+        },
+        {
+          "name": "DJANGO_CORS_ORIGIN_WHITELIST",
+          "valueFrom": "arn:aws:ssm:us-east-1:033818603844:parameter/textatow/staging/DJANGO_CORS_ORIGIN_WHITELIST"
+        },
+        {
+          "name": "DJANGO_FIELD_ENCRYPTION_KEY",
+          "valueFrom": "arn:aws:ssm:us-east-1:033818603844:parameter/textatow/staging/DJANGO_FIELD_ENCRYPTION_KEY"
+        },
+        {
+          "name": "SENTRY_DSN",
+          "valueFrom": "arn:aws:ssm:us-east-1:033818603844:parameter/textatow/staging/SENTRY_DSN"
+        },
+        {
+          "name": "AWS_ACCESS_KEY_ID",
+          "valueFrom": "arn:aws:ssm:us-east-1:033818603844:parameter/textatow/staging/AWS_ACCESS_KEY_ID"
+        },
+        {
+          "name": "AWS_SECRET_ACCESS_KEY",
+          "valueFrom": "arn:aws:ssm:us-east-1:033818603844:parameter/textatow/staging/AWS_SECRET_ACCESS_KEY"
+        },
+        {
+          "name": "AWS_STATIC_BUCKET_NAME",
+          "valueFrom": "arn:aws:ssm:us-east-1:033818603844:parameter/textatow/staging/AWS_STATIC_BUCKET_NAME"
+        },
+        {
+          "name": "AWS_MEDIA_BUCKET_NAME",
+          "valueFrom": "arn:aws:ssm:us-east-1:033818603844:parameter/textatow/staging/AWS_MEDIA_BUCKET_NAME"
+        },
+        {
+          "name": "TWILIO_ACCOUNT_SID",
+          "valueFrom": "arn:aws:ssm:us-east-1:033818603844:parameter/textatow/staging/TWILIO_ACCOUNT_SID"
+        },
+        {
+          "name": "TWILIO_AUTH_TOKEN",
+          "valueFrom": "arn:aws:ssm:us-east-1:033818603844:parameter/textatow/staging/TWILIO_AUTH_TOKEN"
+        },
+        {
+          "name": "TWILIO_NUMBER",
+          "valueFrom": "arn:aws:ssm:us-east-1:033818603844:parameter/textatow/staging/TWILIO_NUMBER"
+        },
+        {
+          "name": "AUTHNET_CLIENT_KEY",
+          "valueFrom": "arn:aws:ssm:us-east-1:033818603844:parameter/textatow/staging/AUTHNET_CLIENT_KEY"
+        },
+        {
+          "name": "AUTHNET_API_LOGIN_ID",
+          "valueFrom": "arn:aws:ssm:us-east-1:033818603844:parameter/textatow/staging/AUTHNET_API_LOGIN_ID"
+        },
+        {
+          "name": "AUTHNET_TRANSACTION_KEY",
+          "valueFrom": "arn:aws:ssm:us-east-1:033818603844:parameter/textatow/staging/AUTHNET_TRANSACTION_KEY"
+        }
+      ],
+      "essential": true,
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+          "awslogs-create-group": "true",
+          "awslogs-group": "/ecs/staging-textatow-tasks",
+          "awslogs-region": "us-east-1",
+          "awslogs-stream-prefix": "ecs"
+        },
+        "secretOptions": []
+      }
+    }
+  ],
+  "requiresCompatibilities": [
+        "FARGATE"
+    ],
+  "executionRoleArn": "arn:aws:iam::033818603844:role/ecsTaskExecutionRole",
+  "volumes": [],
+  "networkMode": "awsvpc",
+  "placementConstraints": [],
+  "cpu": "512",
+  "memory": "2048",
+  "runtimePlatform": {
+        "cpuArchitecture": "X86_64",
+        "operatingSystemFamily": "LINUX"
+    },
+  "family": "staging-textatow-tasks"
+}
